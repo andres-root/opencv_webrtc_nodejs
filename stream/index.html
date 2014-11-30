@@ -1,0 +1,16 @@
+<video autoplay></video>
+<script type="text/javascript">
+	var streamToAttach;
+	var params = {audio: true, video: true}
+	navigator.getUserMedia  = navigator.getUserMedia ||
+	                          navigator.webkitGetUserMedia ||
+	                          navigator.mozGetUserMedia ||
+	                          navigator.msGetUserMedia;
+	navigator.getUserMedia( params,  function(stream) {
+		var video = document.querySelector('video');
+		video.src = window.URL.createObjectURL(stream);
+		streamToAttach = stream;
+	}, function(error) {
+		alert(error)
+	});
+</script>
